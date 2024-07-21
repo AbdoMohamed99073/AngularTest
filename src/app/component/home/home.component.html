@@ -1,0 +1,14 @@
+<h1>{{storeinfot.name}}</h1>
+
+
+<img *ngIf="status" [src]="storeinfot.imageURL">
+
+
+<button type="button" class="btn btn-dark" (click)="change()">{{!status}}</button>
+
+
+<ul>
+  <li *ngFor="let item of storeinfot.branches">
+    {{item}}
+  </li>
+</ul>

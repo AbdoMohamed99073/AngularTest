@@ -1,0 +1,36 @@
+<div class="mb-3">
+  <label for="ordcard" class="form-label">Category</label>
+  <select class="form-control" name="cat" id="ordcard"
+    [(ngModel)]="selectcatID">
+    <option *ngFor="let cat of careglist" [value]="cat.id">{{cat.name}}</option>
+  </select>
+</div>
+<button type="button" class="btn btn-secondary" (click)="chanf()">buy</button>
+<h2>{{ selectcatID }}</h2>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">ID</th>
+      <th scope="col">name</th>
+      <th scope="col">quantaty</th>
+      <th scope="col">price</th>
+      <th scope="col">Count</th>
+      <th scope="col">Buy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let prd of prdlist ; index as i ; trackBy:protrck" [ngClass]="{'bg-warning':prd.quantity == 0}">
+        <td><img Lightboox [src]="prd.imgURL"></td>
+        <td>{{i +1}}</td>
+        <td>{{prd.name}}</td>
+        <td>{{prd.quantity}}</td>
+        <td>{{prd.price}}</td>
+        <td><input #itemCount type="number" class="form-control"></td>
+        <td><button type="button" class="btn btn-secondary"
+            (click)="buy(prd.price,itemCount.value)">buy</button></td>
+        </tr>
+  </tbody>
+  <h2>{{OrdertotalPrice}}</h2>
+</table>
